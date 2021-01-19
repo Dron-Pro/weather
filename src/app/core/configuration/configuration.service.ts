@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 
-import { environment } from '@env/environment';
+import { Environment } from './environment.model';
 
 @Injectable()
 export class ConfigurationService {
   get baseUrl(): string {
-    return environment.baseApiUrl;
+    return this.environment.baseApiUrl;
   }
 
   get appId(): string {
-    return environment.appId;
+    return this.environment.appId;
   }
+
+  constructor(
+    private environment: Environment
+  ) {}
 }

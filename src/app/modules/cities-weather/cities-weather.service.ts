@@ -7,7 +7,7 @@ import * as config from './cities-weather.config';
 
 @Injectable()
 export class CitiesWeatherService {
-  private citiesIds = new BehaviorSubject<string[]>(config.CITIES_IDS);
+  citiesIds = new BehaviorSubject<string[]>(config.CITIES_IDS);
 
   $cities: Observable<Weather[]> = this.citiesIds.asObservable().pipe(
     exhaustMap(ids => forkJoin(ids.map(id => this.openWeather.getWeather(id)))),
