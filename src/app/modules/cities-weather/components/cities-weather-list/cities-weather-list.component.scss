@@ -1,0 +1,62 @@
+@import '../../../../../styles.scss';
+
+:host.app-cities-weather-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-radius: 2px;
+  box-shadow: $box-shadow;
+
+  .app-cities-weather-list-toolbar {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 54px;
+    align-items: center;
+    padding: 0px 8px;
+    background-color: $background-color;
+    border-radius: 2px;
+  
+    &__title {
+      padding: 0px 8px;
+    }
+  }
+
+  .app-cities-weather-list-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    align-items: center;
+    height: 48px;
+
+    &--header {
+      padding: 0px 16px;
+      height: 30px;
+    }
+
+    &__name {
+      flex-basis: 40%;
+      padding: 0px 8px 0px 16px;
+    }
+
+    &__temp {
+      flex-basis: 30%;
+      padding: 0px 8px 0px 8px;
+    }
+
+    &__wind {
+      flex-basis: 30%;
+      padding: 0px 16px 0px 8px;
+    }
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .mat-spinner {
+    margin: auto;
+  }
+}

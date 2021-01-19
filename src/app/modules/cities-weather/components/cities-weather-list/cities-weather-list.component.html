@@ -1,0 +1,42 @@
+<div class="app-cities-weather-list-toolbar">
+  <div class="app-cities-weather-list-toolbar__title">
+    Current weather
+  </div>
+
+  <div class="flex-grow-1"></div>
+
+  <button type="button"
+    mat-raised-button
+    (click)="refresh()"
+  >
+    Refresh
+  </button>
+</div>
+
+<mat-nav-list *ngIf="!!($cities | async)">
+  <div class="app-cities-weather-list-item app-cities-weather-list-item--header">
+    <span class="app-cities-weather-list-item__name">Cities</span>
+    <span class="app-cities-weather-list-item__temp">Temp C</span>
+    <span class="app-cities-weather-list-item__wind">Wind m/s</span>
+  </div>
+
+  <hr>
+
+  <mat-list-item *ngFor="let city of $cities | async">
+    <div class="app-cities-weather-list-item"
+      (click)="navigateToForecast(city)"
+    >
+      <span class="app-cities-weather-list-item__name">
+        {{ city?.name }}
+      </span>
+      <span class="app-cities-weather-list-item__temp">
+        {{ city?.temp }}
+      </span>
+      <span class="app-cities-weather-list-item__wind">
+        {{ city?.speed }}
+      </span>
+    </div>
+  </mat-list-item>
+</mat-nav-list>
+
+<mat-spinner *ngIf="!($cities | async)" [diameter]="50"></mat-spinner>

@@ -1,0 +1,42 @@
+<div class="app-city-weather-forecast-toolbar">
+  <div class="app-city-weather-forecast-toolbar__title">
+    Forecast for {{ ($forecast | async)?.timezone }}
+  </div>
+
+  <div class="flex-grow-1"></div>
+
+  <button type="button"
+    mat-raised-button
+    (click)="navigateToCities()"
+  >
+    Back
+  </button>
+</div>
+
+<cdk-virtual-scroll-viewport *ngIf="!!($forecast | async)" itemSize="48">
+  <mat-nav-list>
+    <div class="app-city-weather-forecast-item app-city-weather-forecast-item--header">
+      <span class="app-city-weather-forecast-item__hour">Hours</span>
+      <span class="app-city-weather-forecast-item__temp">Temp C</span>
+      <span class="app-city-weather-forecast-item__wind">Wind m/s</span>
+    </div>
+
+    <hr>
+
+    <mat-list-item *cdkVirtualFor="let hour of ($forecast | async)?.hourly">
+      <div class="app-city-weather-forecast-item">
+        <span class="app-city-weather-forecast-item__hour">
+          {{ hour?.dt * 1000 | date: 'MMM d h:mm a'}}
+        </span>
+        <span class="app-city-weather-forecast-item__temp">
+          {{ hour?.temp }}
+        </span>
+        <span class="app-city-weather-forecast-item__wind">
+          {{ hour?.speed }}
+        </span>
+      </div>
+    </mat-list-item>
+  </mat-nav-list>
+</cdk-virtual-scroll-viewport>
+
+<mat-spinner *ngIf="!($forecast | async)" [diameter]="50"></mat-spinner>
