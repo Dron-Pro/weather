@@ -14,7 +14,7 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 Run `npm run test` to execute the unit tests via [Jest](https://jestjs.io/).
 
-Run `nom run test:coverage` to generate coverage. The generated artifacts will be stored in the `coveradge/` directory. Open `index.html` in browser for get html version.
+Run `npm run test:coverage` to generate coverage. The generated artifacts will be stored in the `coverage/` directory. Open `index.html` in browser for get html version.
 
 ## Further help
 
